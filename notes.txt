@@ -1,0 +1,14 @@
+JamPlayer, derived from JamPlayer 2.5 from altera and from iolib, by shabaz.
+
+The 4 pins used are in header P8, pins 11,12,13,14.
+The code assume contiguous pins, but allows the lowest pin (TCK) to set via command line option -p<pin#>
+That said, most pins dont work. only pins in banks 0 and 1 are probable, but even then some dont work, and I dont know why. 
+
+It is possible other pins can be used if enabled via exporting the pins prior to starting the player.
+
+For the jam files I have been provided (and checked in as samples), the PROGRAM action assumes a serial flash loader is in place. This can be acheived by the CONFIGURE actions, so a typical command line misht be:
+
+time sudo ./jp -aCONFIGURE loopback_led1.jam && time sudo ./jp -p811 -aPROGRAM loopback_led1.jam
+
+where ./jp is the executable (as currently provided/named by make).
+
